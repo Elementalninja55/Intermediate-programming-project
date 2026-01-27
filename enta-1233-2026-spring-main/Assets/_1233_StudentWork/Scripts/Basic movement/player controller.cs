@@ -48,7 +48,8 @@ public class playercontroller : MonoBehaviour
     {
         ApplyGravity(); 
         ApplyRotation();
-        ApplyMovement(); 
+        ApplyMovement();
+        AnimationParamaters(); 
     }
 
     private void ApplyGravity()
