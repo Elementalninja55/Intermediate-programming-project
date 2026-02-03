@@ -42,6 +42,8 @@ public class playercontroller : MonoBehaviour
     {
         _animator.SetFloat(
             Speed, _input.sqrMagnitude);
+        _animator.SetBool("IsGrounded", _characterController.isGrounded);
+
     }
 
     private void Update()
@@ -103,4 +105,5 @@ public class playercontroller : MonoBehaviour
     }
 
     private bool IsGrounded() => _characterController.isGrounded;
+
 }
