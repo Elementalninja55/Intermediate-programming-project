@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerMgr : Singleton<PlayerMgr>
 {
+    [SerializeField] private GameObject _playerPrefab;
     /*
     public override void Awake() {
         base.Awake();
@@ -15,7 +16,7 @@ public class PlayerMgr : Singleton<PlayerMgr>
     /// This script should be attached to the player object
     /// Meant for single-player games where accessing the player object quickly is convenient
     /// </summary>
-    public GameObject PlayerObject => gameObject;
+    public GameObject PlayerObject => gameObject:
 
     public void Move()
     {

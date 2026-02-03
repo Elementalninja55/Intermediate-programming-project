@@ -1,0 +1,41 @@
+using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class LevelMgr : Singleton<LevelMgr>
+{
+    [SerializeField] private string[] _levelSceneNames;
+
+    internal void LoadCurrentlevel()
+    {
+        throw new NotImplementedException();
+    }
+
+    private int _currentLevelIndex;
+    public bool IsLevelLoaded { get; private set; }
+
+    public void LoadCurrentLevel()
+    {
+        IsLevelLoaded = false;
+        StartCoroutine(LoadLevelRoutine());
+    }
+
+    private IEnumerator LoadLevelRoutine()
+    {
+        string levelName = _levelSceneNames[_currentLevelIndex];
+
+        Debug.Log($"LevelMgr: Loading {levelName} additively");
+
+        var asyncOperation =
+            SceneManager.LoadSceneAsync(
+                levelName, LoadSceneMode.Additive);
+
+        while (asyncOperation is { isDone: false }) yield return null;
+
+        Debug.Log("LevelMgr: Level loaded");
+
+        IsLevelLoaded = true;
+    }
+
+}
