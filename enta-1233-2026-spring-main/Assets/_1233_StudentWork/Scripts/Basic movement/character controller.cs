@@ -33,6 +33,8 @@ public class playercontroller : MonoBehaviour
 
     private float _velocity;
 
+    private bool _jumpInProgress = false;
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -42,6 +44,7 @@ public class playercontroller : MonoBehaviour
     {
         _animator.SetFloat(
             Speed, _input.sqrMagnitude);
+
         _animator.SetBool("IsGrounded", _characterController.isGrounded);
 
     }
@@ -88,12 +91,14 @@ public class playercontroller : MonoBehaviour
     
     public void Jump(InputAction.CallbackContext context)
     {
-        if (!context.started) return;
+        if(!context.started || _jumpInProgress) return;
         if (!IsGrounded() && _numberOfJumps >= maxNumberOfJumps) return;
         if (_numberOfJumps == 0) StartCoroutine(WaitForLanding());
 
         _numberOfJumps++;
         _velocity = jumpPower;
+        _jumpInProgress = true;
+        _animator.SetTrigger("Jump");
     }
 
     private IEnumerator WaitForLanding()
@@ -102,6 +107,9 @@ public class playercontroller : MonoBehaviour
         yield return new WaitUntil(IsGrounded);
 
         _numberOfJumps = 0;
+        _jumpInProgress = false;
+        yield return new WaitForSeconds(0.1f);
+        
     }
 
     private bool IsGrounded() => _characterController.isGrounded;

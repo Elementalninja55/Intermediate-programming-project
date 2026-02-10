@@ -16,7 +16,21 @@ public class PlayerMgr : Singleton<PlayerMgr>
     /// This script should be attached to the player object
     /// Meant for single-player games where accessing the player object quickly is convenient
     /// </summary>
-    public GameObject PlayerObject => gameObject:
+    public GameObject PlayerObject { get; private set; }
+
+    public bool HasSpawnedPlayer => PlayerObject != null;
+
+    public void SpawnPlayer(Vector3 position, Quaternion rotation)
+    {
+        if (PlayerObject)
+        {
+            Debug.LogError("Player already spawned!");
+            return;
+        }
+
+        PlayerObject = Instantiate(_playerPrefab, position, rotation);
+        Debug.Log("Player spawned");
+    }
 
     public void Move()
     {

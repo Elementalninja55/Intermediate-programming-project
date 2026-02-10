@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8524240638639900879}
   - component: {fileID: 4984843826586603272}
+  - component: {fileID: 8213917461101976863}
+  - component: {fileID: 6647027045800161337}
   m_Layer: 0
   m_Name: GameGlobals
   m_TagString: Untagged
@@ -50,6 +52,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _willNotDestroyOnLoad: 0
+--- !u!114 &8213917461101976863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612291540932184289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de277da4339c142b16307c2fe5da40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _willNotDestroyOnLoad: 0
+  _levelSceneNames:
+  - Level 1
+  - Level 2
+--- !u!114 &6647027045800161337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612291540932184289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c098ad20788e14c9a26c180c7e58a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _willNotDestroyOnLoad: 0
+  _playerPrefab: {fileID: 4053793855314629316, guid: 47c2e92036ba49143a35695227534f15, type: 3}
 --- !u!1001 &2449460604819852469
 PrefabInstance:
   m_ObjectHideFlags: 0
