@@ -8,4 +8,12 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: AOC_Bloom
   m_Controller: {fileID: 9100000, guid: c61cc8c89ed8c4b4d8cb2c9eb246af2f, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 3858f99f31d357e4c9e9bc86dde0c8e2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 452ec3babe37a0949a4008bac1a5a3e9, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 392a3ca32aaf72049850b28f7dbf54a8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ae93714a10a6109469c06cb9d1d662c3, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 8b6b524dd8b3d09429eae41869c2edbc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 97ac820f68e469c4ca90645f8f02be8b, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 1e42a870c30008b4595be06c5a2ebe8d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 62783596cf9b39a49b77b38c2d8bd621, type: 3}
