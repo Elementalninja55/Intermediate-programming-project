@@ -8,7 +8,7 @@ public class DetectionSystem : MonoBehaviour
     [SerializeField] private Transform _eyeposition;
     [SerializeField] private float _detectionRange = 15f;
     [SerializeField] private float _fieldOfView = 120f;
-    [SerializeField] private LayerMask _obstrucitonMask;
+    [SerializeField] private LayerMask _obstructionMask;
 
     public float DetectionRange => _detectionRange;
 
@@ -24,8 +24,8 @@ public class DetectionSystem : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _detectionRange);
 
         // Draw FOV cone
-        var leftDir:Vector3 = Quaternion.Euler(0, -_fieldOfView / 2, 0) * transform.forward;
-        var rightDir:Vector3 = Quaternion.Euler(0, _fieldOfView / 2, 0) * transform.forward;
+        var leftDir = Quaternion.Euler(0, -_fieldOfView / 2, 0) * transform.forward;
+        var rightDir = Quaternion.Euler(0, _fieldOfView / 2, 0) * transform.forward;
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(from: transform.position, direction: leftDir * _detectionRange);
         Gizmos.DrawRay(from: transform.position, direction: rightDir * _detectionRange);
@@ -41,8 +41,8 @@ public class DetectionSystem : MonoBehaviour
     {
         if (target == null) return false;
 
-        var directionToTarget:Vector3 = (target.position - _eyeposition.position).normalized;
-        var distanceToTarget:float = Vector3.Distance(_eyeposition.position, target.position);
+        var directionToTarget = (target.position - _eyeposition.position).normalized;
+        var distanceToTarget = Vector3.Distance(_eyeposition.position, target.position);
 
         // Check if target is within FOV
         if (Physics.Raycast(origin: _eyeposition.position, directionToTarget,

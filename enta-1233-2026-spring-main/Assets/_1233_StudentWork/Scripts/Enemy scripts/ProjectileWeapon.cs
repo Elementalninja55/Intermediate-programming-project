@@ -21,7 +21,7 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
         _nextFireTime = Time.time + 1f / _fireRate;
 
         // Direct fire by default, or could be configured for arc
-        var direction:Vector3 = (targetPosition - _muzzle.position).normalized;
+        var direction = (targetPosition - _muzzle.position).normalized;
         SpawnProjectile(direction);
     }
 
@@ -39,28 +39,28 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
 
         _nextFireTime = Time.time + 1f /_fireRate;
 
-        var velocity:Vector3 = CalculateArcVelocity(_muzzle.position, targetPosition, _arcHeight);
+        var velocity = CalculateArcVelocity(_muzzle.position, targetPosition, _arcHeight);
         var projectile = Instantiate(_projectilePrefab, _muzzle.position, _muzzle.rotation);
         projectile.LaunchWithVelocity(velocity, gameObject);
     }
 
     private void SpawnProjectile(Vector3 direction)
     {
-        var projectile = Instantiate(_projectilePrefabe, _muzzle.position,
+        var projectile = Instantiate(_projectilePrefab, _muzzle.position,
             Quaternion.LookRotation(direction));
         projectile.Launch(direction, gameObject);
     }
 
     private Vector3 CalculateArcVelocity(Vector3 start, Vector3 end, float height)
     {
-        var displacementY:float = end.y - start.y;
+        var displacementY = end.y - start.y;
         var displacementXZ = new Vector3(end.x - start.x, 0, end.z - start.z);
-        var gravity:float = Physics.gravity.y;
+        var gravity = Physics.gravity.y;
 
-        var time:float = Mathf.Sqrt(f: -2 * height / gravity) +
-            Mathf.Sqrt(f: 2 * (displacementY - height) / gravity);
-        var velocityY:Vector3 = Vector3.up * Mathf.Sqrt(f: -2 * gravity * height);
-        var velocityXZ:Vector3 = displacementXZ / time;
+        var time = Mathf.Sqrt(-2 * height / gravity) +
+            Mathf.Sqrt(2 * (displacementY - height) / gravity);
+        var velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * height);
+        var velocityXZ = displacementXZ / time;
 
         return velocityXZ + velocityY * -Mathf.Sign(gravity);
     }

@@ -10,11 +10,11 @@ public class BudBrain : MonoBehaviour
     {
         FixedAxis,
         DirectAim,
-        Arcfire
+        ArcFire
     }
 
     [Header("Components")]
-    [SerializeField] private Health _health
+    [SerializeField] private Health _health;
 
     [SerializeField] private ProjectileWeapon _weapon;
     [SerializeField] private DetectionSystem _detection;
@@ -54,7 +54,9 @@ public class BudBrain : MonoBehaviour
                 HandleDirectAim();
                 break;
 
-            case FireMode.Arcfire:
+            case FireMode.ArcFire:
+                HandleArcFire();
+                break;
         }
     }
 
@@ -68,12 +70,12 @@ public class BudBrain : MonoBehaviour
         if (_health != null) _health.OnDied -= HandleDied;
     }
 
-    private void HandleDirectaim()
+    private void HandleDirectAim()
     {
         if (_targetProvider == null || !_targetProvider.HasTarget) return;
 
-        var target:Transform = _targetProvider.GetTarget();
-        var target:Vector3 = _targetProvider.GetTargetPosition();  
+        var target = _targetProvider.GetTarget();
+        var targetPos = _targetProvider.GetTargetPosition();  
         if (_detection.IsTargetInDetectionRange(target) && _detection.HasLineOfSight(target))
         {
             _rotator?.FacePosition(targetPos);
@@ -89,8 +91,8 @@ public class BudBrain : MonoBehaviour
     {
         if (_targetProvider == null || !_targetProvider.HasTarget) return;
 
-        var target:Transform = _targetProvider.GetTarget();
-        var targetPos:Vector3 = _targetProvider.GetTargetPosition();
+        var target = _targetProvider.GetTarget();
+        var targetPos = _targetProvider.GetTargetPosition();
         if (_detection.IsTargetInDetectionRange(target) && _detection.HasLineOfSight(target))
         {
             _rotator?.FacePosition(targetPos);

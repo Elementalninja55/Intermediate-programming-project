@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerTargetProvider : MonoBehaviour, ITargetProvider
 {
-    [SerializeField] private Vector3 _pffset = new(0, 1f, 0);
+    [SerializeField] private Vector3 _offset = new(0, 1f, 0);
 
     public bool HasTarget => PlayerMgr.Instance != null && PlayerMgr.Instance.HasSpawnedPlayer;
 
