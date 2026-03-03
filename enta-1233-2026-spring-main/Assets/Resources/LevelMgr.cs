@@ -37,5 +37,4 @@ public class LevelMgr : Singleton<LevelMgr>
 
         IsLevelLoaded = true;
     }
-
 }
